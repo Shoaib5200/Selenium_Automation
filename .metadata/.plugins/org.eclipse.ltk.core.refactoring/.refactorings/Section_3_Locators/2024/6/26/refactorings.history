@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;relativeLocators.java&apos; to &apos;Section_15_Latest_Features/src&apos;&#x0D;&#x0A;- Original project: &apos;Section_3_Locators&apos;&#x0D;&#x0A;- Destination element: &apos;Section_15_Latest_Features/src&apos;&#x0D;&#x0A;- Original element: &apos;relativeLocators.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=Section_15_Latest_Features/src=/optional=/true=/=/maven.pomderived=/true=/" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;{relativeLocators.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1719336299179" units="1" version="1.0"/>
+</session>

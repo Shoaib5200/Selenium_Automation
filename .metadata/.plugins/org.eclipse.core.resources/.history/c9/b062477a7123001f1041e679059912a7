@@ -1,0 +1,35 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Assignment3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C://SHOAIB DANISH//Study Material//Automation//chromedriver-win64//chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		//Variables declaration
+		String UserName = "Shoaib Danish";
+		String EmailAdress = "shoaib.danish@test.com";
+		
+		
+		// Open the provided URl
+		driver.get("https://rahulshettyacademy.com/angularpractice/");
+		
+		driver.findElement(By.name("name")).sendKeys(UserName);
+		driver.findElement(By.name("email")).sendKeys(EmailAdress);
+		driver.findElement(By.cssSelector("input[type='password']")).sendKeys("test");
+		driver.findElement(By.cssSelector("input[type='checkbox']")).click();
+		
+		WebElement staticDropdown = driver.findElement(By.id("exampleFormControlSelect1"));
+		Select dropdown = new Select(staticDropdown);
+		dropdown.selectByIndex(1);
+		System.out.println(dropdown.getFirstSelectedOption().getText());
+		dropdown.selectByVisibleText("AED");
+
+	}
+
+}

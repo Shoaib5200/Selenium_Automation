@@ -1,0 +1,37 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DynamicDropdown {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C://SHOAIB DANISH//Study Material//Automation//chromedriver-win64//chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		
+		// Click the Dynamic Dropdown > select 5 adults > Click the DONE (button)
+		
+		
+		driver.findElement(By.id("divpaxinfo")).click();
+		System.out.println("Before executing a loop: " + driver.findElement(By.id("divpaxinfo")).getText()+"s.");
+		Thread.sleep(1000);
+		
+		// select 5 adults with while and for loop
+	    /*
+		int i=1;
+		while (i<5){
+			driver.findElement(By.id("hrefIncAdt")).click();
+		i++;
+		}
+		*/
+		
+		for (int i=1; i<5; i++) {
+			driver.findElement(By.id("hrefIncAdt")).click();
+		}
+		driver.findElement(By.id("btnclosepaxoption")).click();
+		
+		System.out.println("After executing a loop: " + driver.findElement(By.id("divpaxinfo")).getText()+"s.");
+	}
+
+}

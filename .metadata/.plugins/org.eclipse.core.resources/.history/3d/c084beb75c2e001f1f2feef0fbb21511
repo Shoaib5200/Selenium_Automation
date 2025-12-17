@@ -1,0 +1,26 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CalendarTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C://SHOAIB DANISH//Study Material//Automation//chromedriver-win64//chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		int day = 16;
+		int month = 12;
+		int year = 1993;
+		
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+
+		driver.findElement(By.className("react-date-picker__inputGroup")).click();
+		driver.findElement(By.cssSelector(".react-calendar__navigation__label__labelText")).click();
+		driver.findElement(By.cssSelector(".react-calendar__navigation__label__labelText")).click();
+		driver.findElement(By.xpath("//button[text()='"+year+"']")).click();
+		driver.findElements(By.cssSelector(".react-calendar__year-view__months__month")).get(month-1).click();
+
+	}
+
+}

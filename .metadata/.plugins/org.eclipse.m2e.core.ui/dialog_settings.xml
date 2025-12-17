@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="Section_15_Latest_Features"/>
+			<item value="Section_14_Selenium_Java_Streams"/>
+			<item value="Section_13_Miscellaneous_Topics"/>
+			<item value="Section_12"/>
+			<item value="Section_11_Scope"/>
+			<item value="Section_11"/>
+			<item value="Section_10"/>
+			<item value="Section_7"/>
+			<item value="Section_3_Locators"/>
+			<item value="ShoaibDanish_Group_ID"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="Section_15_Latest_Features"/>
+			<item value="Section_14_Selenium_Java_Streams"/>
+			<item value="Section_13_Miscellaneous_Topics"/>
+			<item value="Section_12"/>
+			<item value="Section_11_Scope"/>
+			<item value="Section_11"/>
+			<item value="Section_10"/>
+			<item value="Section_7"/>
+			<item value="Section_3_Locators"/>
+			<item value="ShoaibDanish_Artifact_ID"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

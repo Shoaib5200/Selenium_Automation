@@ -1,0 +1,38 @@
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Assignment4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C://SHOAIB DANISH//Study Material//Automation//chromedriver-win64//chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/loginpagePractise/");
+		WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(5));
+		
+		
+		driver.findElement(By.id("username")).sendKeys("rahulshettyacademy");		//Insert text into the username field
+		driver.findElement(By.id("password")).sendKeys("password");					//Insert text into the password field
+		driver.findElement(By.cssSelector("input[value='user']")).click();			//Click the radio button of User
+		
+		//driver.switchTo().alert().accept();
+		w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("okayBtn")));
+		driver.findElement(By.id("okayBtn")).click();
+		
+		
+		WebElement staticDropdown = driver.findElement(By.cssSelector("select[data-style='btn-info']"));
+		Select dropdown = new Select(staticDropdown);
+		dropdown.selectByIndex(2);
+		System.out.println(dropdown.getFirstSelectedOption().getText());
+		dropdown.selectByVisibleText("Consultant");
+
+	}
+
+}

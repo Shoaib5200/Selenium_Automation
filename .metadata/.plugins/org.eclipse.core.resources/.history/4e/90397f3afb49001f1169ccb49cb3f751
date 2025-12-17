@@ -1,0 +1,17 @@
+package test;
+
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class day1 {
+
+	@Test
+	public void day1_firstTest() {
+		System.out.println("Class (Day 1) - Hello World 1st test");
+		}
+
+	@AfterTest
+	public void day1_secondTest() {
+		System.out.println("Class (Day 1) - Hello World 2nd test");
+	}
+}

@@ -1,0 +1,44 @@
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Assignment4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C://SHOAIB DANISH//Study Material//Automation//chromedriver-win64//chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/loginpagePractise/");
+		WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(5));
+		
+		driver.findElement(By.id("username")).sendKeys("rahulshettyacademy");				// Insert text into the username field
+		driver.findElement(By.id("password")).sendKeys("learning");							// Insert text into the password field
+		driver.findElement(By.cssSelector("input[value='user']")).click();					// Click the radio button of User
+		
+		w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("okayBtn")));		// Wait for the JavaScript alert to get displayed
+		driver.findElement(By.id("okayBtn")).click();										// Accept the JavaScript alert
+		
+		WebElement staticDropdown = driver.findElement(By.cssSelector("select[data-style='btn-info']")); 		// Select the 3rd option from the Select box
+		Select dropdown = new Select(staticDropdown);
+		dropdown.selectByValue("consult");
+		
+		driver.findElement(By.id("terms")).click(); 										// Mark the Check box of Terms and Conditions
+		driver.findElement(By.id("signInBtn")).click();										// Click the Sign In (button)
+		
+		
+		w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.partialLinkText("Checkout")));
+		List <WebElement> products = driver.findElements(By.cssSelector(".card-footer .btn-info"));
+		for (int i=0;i<products.size();i++) {
+			products.get(i).click();
+		}
+		
+		driver.findElement(By.partialLinkText("Checkout")).click();
+	}
+}

@@ -1,0 +1,85 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+public class End_To_End_AutomationWebPage {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C://SHOAIB DANISH//Study Material//Automation//chromedriver-win64//chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		
+		// Maximize the browser window
+		driver.manage().window().maximize();
+		
+		
+		// Insert text in the Suggestive Dropdown
+		driver.findElement(By.id("autosuggest")).sendKeys("ind");
+		Thread.sleep(2000);
+		List<WebElement> options = driver.findElements(By.cssSelector("li[class='ui-menu-item'] a"));
+		
+		for (WebElement option: options) 
+		{
+			if(option.getText().equalsIgnoreCase("India")) 
+			{
+				option.click();
+				break;
+			}
+		}
+		
+		// Click the dynamic dropdown
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		
+		// Select the Bengaluru from 1st dropdown
+		driver.findElement(By.xpath("//a[@value='BLR']")).click();
+		//driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_originStation1_CTNR'] //a[@value='BLR']")).click();
+		System.out.println(driver.findElement(By.xpath("//a[@value='BLR']")).getText());
+		
+		Thread.sleep(2000);
+		
+		// Select the Chennai from 2nd dropdown
+		driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).click();
+		System.out.println(driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']")).getText());
+		
+		//Select Calendar
+		// ui-state-highlight
+		driver.findElement(By.cssSelector(".ui-state-highlight")).click();
+		
+		// Radio Buttons
+		// CLick the Round Trip and verify that return date (section) is Enabled or Disabled
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		driver.findElement(By.cssSelector("input[id='ctl00_mainContent_rbtnl_Trip_1']")).click();
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		if(driver.findElement(By.id("Div1")).getAttribute("style").contains("0.5")) {
+			System.out.println("It's enabled");
+			Assert.assertTrue(true);
+		}else {
+			Assert.assertTrue(true);
+		}
+		
+		// Get Passengers from increamental dropdown
+		driver.findElement(By.id("divpaxinfo")).click();
+		System.out.println("Before executing a loop: " + driver.findElement(By.id("divpaxinfo")).getText()+"s.");
+		Thread.sleep(1000);
+		for (int i=1; i<5; i++) {
+			driver.findElement(By.id("hrefIncAdt")).click();
+		}
+		driver.findElement(By.id("btnclosepaxoption")).click();
+		System.out.println("After executing a loop: " + driver.findElement(By.id("divpaxinfo")).getText()+"s.");
+		
+		//Static Dropdown for Currency Selection
+		WebElement staticDropdown = driver.findElement(By.id("ctl00_mainContent_DropDownListCurrency"));
+		Select dropdown = new Select(staticDropdown);
+		dropdown.selectByIndex(3);
+		System.out.println(dropdown.getFirstSelectedOption().getText());
+		dropdown.selectByVisibleText("USD");
+		driver.findElement(By.cssSelector("input[name='ctl00$mainContent$btn_FindFlights']")).click();
+
+	}
+}
