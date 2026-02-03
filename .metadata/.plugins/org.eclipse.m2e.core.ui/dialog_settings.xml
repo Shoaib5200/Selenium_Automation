@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="14_Java_Streams"/>
 			<item value="Section_15_Latest_Features"/>
 			<item value="Section_14_Selenium_Java_Streams"/>
 			<item value="Section_13_Miscellaneous_Topics"/>
@@ -16,6 +17,7 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="14_Java_Streams"/>
 			<item value="Section_15_Latest_Features"/>
 			<item value="Section_14_Selenium_Java_Streams"/>
 			<item value="Section_13_Miscellaneous_Topics"/>
