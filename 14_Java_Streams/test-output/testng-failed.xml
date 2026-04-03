@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="JavaStreams_v2">
+      <class name="JavaStreams_v1_1">
         <methods>
-          <include name="streamFilter"/>
+          <include name="mergeList"/>
         </methods>
-      </class> <!-- JavaStreams_v2 -->
+      </class> <!-- JavaStreams_v1_1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
