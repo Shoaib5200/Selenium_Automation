@@ -1,10 +1,13 @@
+// ============================
+// Selenium automation script to validate table sorting, handle pagination dynamically, extract specific data using Java Streams, and capture screenshots.
+// ============================
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -17,47 +20,92 @@ import org.testng.Assert;
 public class webTableSorting {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		WebDriver driver = new ChromeDriver();
- 		driver.manage().window().maximize();
 
-		// Open the website
+		// Initialize Chrome browser instance
+		WebDriver driver = new ChromeDriver();
+
+		// Optional: maximize browser window
+		// driver.manage().window().maximize();
+
+		// Navigate to the web application
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
 
-		// Click the table column
+		// Click on the first column header (Veg/fruit name) to apply sorting
 		driver.findElement(By.xpath("//tr//th[1]")).click();
 
-		// Capture all webElements
+		// Capture all product names from the first column of the table
 		List<WebElement> productsName = driver.findElements(By.xpath("//tr//td[1]"));
 
-		// capture text of all webElements into new list
-		List<String> originalList = productsName.stream().map(s -> s.getText()).collect(Collectors.toList());
+		// Extract text from WebElements and store in a list (original UI order)
+		List<String> originalList = productsName.stream()
+				.map(s -> s.getText())
+				.collect(Collectors.toList());
 
-		// sort in the list of step 3 -> sorted list
-		List<String> sortedList = originalList.stream().sorted().collect(Collectors.toList());
+		// Create a sorted version of the same list using Java Streams
+		List<String> sortedList = originalList.stream()
+				.sorted()
+				.collect(Collectors.toList());
+
+		// Print sorted list for debugging/verification
 		System.out.println(sortedList);
-		// compare original list vs sorted list
+
+		// Validate that UI sorting matches programmatic sorting
 		Assert.assertTrue(originalList.equals(sortedList));
 
-		// scan the name column with getText -> Rice -> print the price of the price
-		List<String> price = productsName.stream().filter(s -> s.getText().contains("Beans"))
-				.map(s -> getPriceVeggie(s)).collect(Collectors.toList());
-		price.forEach(a -> System.out.println(a));
-		
-		// Take screenshots
+		// ============================
+		// Pagination + Search Logic
+		// ============================
+
+		// Goal: Find "Rice" across paginated table and print its price
+
+		List<String> price;
+
+		do {
+			// Re-fetch elements on each iteration to avoid stale element issues
+			List<WebElement> rows = driver.findElements(By.xpath("//tr//td[1]"));
+
+			// Filter rows to find "Rice" and extract its corresponding price
+			price = rows.stream()
+					.filter(s -> s.getText().contains("Rice"))
+					.map(s -> getPriceVeggie(s))
+					.collect(Collectors.toList());
+
+			// Print the price if found
+			price.forEach(a -> System.out.println("The price of the desired vegetable is: " + a));
+
+			// If "Rice" not found on current page, navigate to next page
+			if (price.size() < 1) {
+				driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+			}
+
+			// Continue looping until the item is found
+		} while (price.size() < 1);
+
+		// ============================
+		// Screenshot Capture
+		// ============================
+
+		// Define test name for screenshot naming
 		String testName = "Selenium";
-		File source = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		File target =  new File("C://Users//Administrator//Downloads//Selenium_ScreenShots//Screenshot_"
-				+ testName 
-				+"_"
-				+ String.valueOf(new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(new Date()))
-				+".png");           
-	                
+
+		// Capture screenshot of current browser state
+		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+		// Create target file path with timestamp to avoid overwriting
+		File target = new File("C://Users//Administrator//Downloads//Selenium_ScreenShots//Screenshot_"
+				+ testName + "_"
+				+ new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss").format(new Date())
+				+ ".png");
+
+		// Save screenshot to the specified location
 		FileUtils.copyFile(source, target);
-		
+
+		// Close the browser
 		driver.quit();
 	}
 
+	// Helper method to fetch price of a vegetable from the same row
+	// Uses relative XPath to locate the next column (price)
 	private static String getPriceVeggie(WebElement s) {
 		return s.findElement(By.xpath("following-sibling::td[1]")).getText();
 	}
