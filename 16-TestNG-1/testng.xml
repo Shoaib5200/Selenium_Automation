@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Laon Department">
+<suite name="Laon Department" parallel="tests" thread-count="10">
+	<listeners>
+		<listener class-name="test.Listeners" />
+	</listeners>
+	<parameter name="URL" value="personalLoan.com" />
+	<parameter name="APIKey/usrname" value="123456" />
 
 	<test thread-count="5" name="Personal Loan">
 		<classes>
@@ -9,20 +14,23 @@
 					<include name="Demo"></include>
 				</methods>
 			</class>
+
 			<class name="test.test_B" />
 			<class name="test.test_D" />
 		</classes>
 	</test> <!-- Test -->
 
-	<test name="Car Loan">
-		<classes>
-			<class name="test.test_C">
-				<methods>
-					<exclude name="CarAPI.*" />
-				</methods>
-			</class>
-		</classes>
-	</test> <!--
+	<parameter name="URL" value="carLoan.com">
+		<parameter name="APIKey/usrname" value="123456" />
+		<test name="Car Loan">
+			<classes>
+				<class name="test.test_C">
+					<methods>
+						<exclude name="CarAPI.*" />
+					</methods>
+				</class>
+			</classes>
+		</test> <!--
 	Test -->
-
+	</parameter>
 </suite> <!--Suite -->

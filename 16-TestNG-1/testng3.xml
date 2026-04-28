@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Laon Department">
+
+	<test thread-count="5" name="Regression">
+		<groups>
+			<run>
+				<exclude name="Smoke"></exclude>
+			</run>
+		</groups>
+		
+		<classes>	
+			<class name="test.test_A" />
+			<class name="test.test_B" />
+			<class name="test.test_C" />
+			<class name="test.test_D" />
+		</classes>
+	</test> <!--Test -->
+</suite> <!--Suite -->
