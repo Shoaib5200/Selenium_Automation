@@ -5913,3 +5913,11 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.seleniumh
 2026-04-28 19:18:08,394 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\ShoaibDanish\Automation_Practice\Selenium_Automation\16-TestNG-1\src\test\resources
 2026-04-28 19:32:06,464 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@20e7ca44{STOPPING}[12.0.21,sto=0]
 2026-04-28 19:32:06,553 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@55c615c0{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2026-04-29 11:52:01,940 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2026-04-29 12:51:25,864 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-12.0.21; built: 2025-05-09T00:32:00.688Z; git: 1c4719601e31b05b7d68910d2edd980259f1f53c; jvm 21.0.8+9-LTS
+2026-04-29 12:51:26,027 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started oeje8n.ContextHandler$CoreContextHandler@40907516{/help,/help,b=null,a=AVAILABLE,h=oeje8n.ContextHandler$CoreContextHandler$CoreToNestedHandler@2325e4d{STARTED}}
+2026-04-29 12:51:26,030 [Start Help Server] INFO  o.e.j.s.DefaultSessionIdManager - Session workerName=node0
+2026-04-29 12:51:26,077 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@4f62aef5{HTTP/1.1, (http/1.1)}{127.0.0.1:62777}
+2026-04-29 12:51:26,131 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started oejs.Server@54c61dc0{STARTING}[12.0.21,sto=0] @3580079ms
+2026-04-29 13:07:29,946 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped oejs.Server@54c61dc0{STOPPING}[12.0.21,sto=0]
+2026-04-29 13:07:30,051 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@4f62aef5{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
